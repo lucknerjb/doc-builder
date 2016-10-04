@@ -31,70 +31,7 @@
 </head>
 
 <body class="body-green">
-    <div class="page-wrapper" id="app">
-        <!-- ******Header****** -->
-        <db-header></db-header>
-        <div class="doc-wrapper">
-            <div class="container">
-                <div id="doc-header" class="doc-header text-center">
-                    <!-- TODO: Change icon -->
-                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i>Documentation</h1>
-                    <div class="meta">jQuery plugin providing a Twitter Bootstrap user interface for managing tags</div>
-                </div><!--//doc-header-->
-                <div class="doc-body">
-                    <div class="doc-content">
-                        <div class="content-inner">
-                            <section id="installation-section" class="doc-section">
-                                <h2 class="section-title">Installation</h2>
-                                <div id="install-browser"  class="section-block">
-                                    <h3 class="block-title">Browser</h3>
-                                    <p>Bootstrap TagsInput is available on <a href="https://cdnjs.com/libraries/bootstrap-tagsinput">cdnjs.com</a>
-                                    </p>
-                                    <div class="code-block">
-                                        <pre><code class="language-markup"></code></pre>
-                                        <p><code>bower install --save bootstrap-tagsinput</code></p>
-                                        <p><code>npm install &lt;package&gt;</code></p>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="install-bower"  class="section-block">
-                                    <h3 class="block-title">Bower</h3>
-                                    <p>The Bower package is located <a href="https://www.npmjs.com/package/bootstrap-tagsinput">here</a>
-                                    <p><code>bower install --save bootstrap-tagsinput</code></p>
-                                </div><!--//section-block-->
-                                <div id="install-npm"  class="section-block">
-                                    <h3 class="block-title">NPM</h3>
-                                    <p>The NPM package is located <a href="https://www.npmjs.com/package/bootstrap-tagsinput">here</a>
-                                    <p><code>npm install --save bootstrap-tagsinput</code></p>
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-
-                            <section id="options-section" class="doc-section">
-                                <h2 class="section-title">Options</h2>
-                                <div id="options-tagClass" class="section-block">
-                                    <h3 class="block-title">tagClass</h3>
-                                    <p>Classname for the tags, or a function returning a classname</p>
-                                    <div class="code-block">
-                                        <pre><code class="language-javascript"></code></pre>
-                                        <pre><code class="language-javascript" id="2"></code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="options-itemValue"  class="section-block">
-                                    <h3 class="block-title">itemValue</h3>
-                                    <p>When adding objects as tags, itemValue must be set to the name of the property containing the item's value, or a function returning an item's value.<p>
-                                    <div class="code-block">
-                                          <pre><code class="language-javascript"></code></pre>
-                                          <pre><code class="language-javascript"></code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                        </div><!--//content-inner-->
-                    </div><!--//doc-content-->
-                    <db-sidebar></db-sidebar>
-                </div><!--//doc-body-->
-            </div><!--//container-->
-        </div><!--//doc-wrapper-->
-
-    </div><!--//page-wrapper-->
+    <div id="app"></div>
 
     <footer id="footer" class="footer text-center">
         <div class="container">
@@ -112,8 +49,42 @@
     <script type="text/javascript" src="/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/javascripts/main.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.13/vue.min.js"></script>
-    <script src="/javascripts/app.browserify.js?v={{ cachebust }}"></script>
+
+    <style media="screen">
+        .edit-wrapper {
+            border: 3px dashed #CCC;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .edit-wrapper .code-block {
+            margin: 0;
+        }
+
+        .add-content-block {
+            margin: 10px 10px 10px 0;
+        }
+
+        .modal-body .form-horizontal .form-group {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        textarea {
+            width: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var AppConfig = {
+            "apiUrl": "http://api.showkasepad.local:8000/api/v1",
+            "baseScheme": "http",
+            "baseUrl": "showkasepad.local:8000",
+            "home_url": "http://showkasepad.local:8000",
+        };
+    </script>
+
+    <script src="/javascripts/build.js?v={{ cachebust }}"></script>
 
     <script type="text/javascript">
       $(document).ready(function() {
