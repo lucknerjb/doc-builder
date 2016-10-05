@@ -11,17 +11,17 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 
-let session = AuthService.getCurrentSession()
-if (session) {
-    Vue.http.headers.common['Authorization'] = "Bearer " + session.access_token
-
-    $.ajaxSetup({
-        beforeSend: function (xhr){
-            xhr.setRequestHeader('Authorization', 'Bearer ' + session.access_token)
-            return xhr
-        }
-    })
-}
+// let session = AuthService.getCurrentSession()
+// if (session) {
+//     Vue.http.headers.common['Authorization'] = "Bearer " + session.access_token
+//
+//     $.ajaxSetup({
+//         beforeSend: function (xhr){
+//             xhr.setRequestHeader('Authorization', 'Bearer ' + session.access_token)
+//             return xhr
+//         }
+//     })
+// }
 
 require('./router.js')(VueRouter, App)
 // window.rl_router = require('./router.js')(VueRouter, App)

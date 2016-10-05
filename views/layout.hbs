@@ -70,12 +70,22 @@
             margin-right: 30px;
         }
 
+        #doc-menu.edit-mode {
+            position: absolute;
+            top: 15px;
+        }
+
+        #doc-menu.edit-mode .doc-sub-menu {
+            display: block;
+        }
+
         textarea {
             width: 100%;
         }
     </style>
 
     <script type="text/javascript">
+        var app_data = {{{ json data }}}
         var AppConfig = {
             "apiUrl": "http://api.showkasepad.local:8000/api/v1",
             "baseScheme": "http",

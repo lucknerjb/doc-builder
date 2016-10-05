@@ -19,7 +19,8 @@
         </div>
 
         <div v-show="edit_mode">
-            <textarea rows="8" cols="100" v-model="content"></textarea>
+            <textarea rows="8" cols="100" v-model="clean_content" v-if="type === 'code_block'"></textarea>
+            <textarea rows="8" cols="100" v-model="content" v-if="type !== 'code_block'"></textarea>
             <button type="button" name="button" v-on:click="update()">Update</button>
         </div>
     </div>
@@ -40,7 +41,7 @@
                 }, 0)
             }
         },
-        props: ['type', 'content'],
+        props: ['type', 'content', 'id', 'identifier'],
 
         data: function() {
             return {
@@ -65,6 +66,7 @@
 
             update: function() {
                 if (this.type === 'code_block') {
+                    // var clean_content = self.unescapeHtml(this.content);
                     var html = Prism.highlight(this.clean_content, Prism.languages.markup);
                     $(this.$el).find('code').html(html);
                     Prism.highlightElement($('#1')[0]);
@@ -73,6 +75,9 @@
                 } else {
                     // $(this.$el).find('p').html(this.clean_content);
                 }
+
+                // Trigger event
+                this.$dispatch('section.content.updated', this.id, this.identifier, this.content)
 
                 this.edit_mode = !this.edit_mode
             }

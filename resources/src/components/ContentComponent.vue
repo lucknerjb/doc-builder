@@ -7,7 +7,7 @@
 
                 <div class="sub-section-content" v-if="section_content[section.identifier]">
                     <div v-for="item in section_content[section.identifier]">
-                        <db-content-type :type="item.type" :content="item.content"></db-content-type>
+                        <db-content-type :type="item.type" :content="item.content" :id="item.id" :identifier="section.identifier"></db-content-type>
                         <db-add-content-block :index="$index" :identifier="section.identifier"></db-add-content-block>
                     </div>
                 </div>
@@ -18,7 +18,7 @@
 
                     <div class="sub-section-content" v-if="section_content[sub_section.identifier]">
                         <div v-for="item in section_content[sub_section.identifier]">
-                            <db-content-type :type="item.type" :content="item.content"></db-content-type>
+                            <db-content-type :type="item.type" :content="item.content" :id="item.id" :identifier="section.identifier"></db-content-type>
                             <db-add-content-block :index="$index" :identifier="sub_section.identifier"></db-add-content-block>
                         </div>
                     </div>
