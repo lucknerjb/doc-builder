@@ -1,14 +1,18 @@
-$(document).ready(function() {
-
-	/* ===== Affix Sidebar ===== */
-	/* Ref: http://getbootstrap.com/javascript/#affix-examples */
-
-	$('#doc-menu').not('.edit-mode').affix({
+function resetSidebar() {
+    $('#doc-menu').affix({
         offset: {
             top: ($('#header').outerHeight(true) + $('#doc-header').outerHeight(true)) + 45,
             bottom: ($('#footer').outerHeight(true) + $('#promo-block').outerHeight(true)) + 75
         }
     });
+}
+
+$(document).ready(function() {
+
+	/* ===== Affix Sidebar ===== */
+	/* Ref: http://getbootstrap.com/javascript/#affix-examples */
+
+	resetSidebar();
 
     /* Hack related to: https://github.com/twbs/bootstrap/issues/10236 */
     $(window).on('load resize', function() {

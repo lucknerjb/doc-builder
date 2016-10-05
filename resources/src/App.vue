@@ -52,6 +52,17 @@
         },
 
         events: {
+            'app.edit_mode.toggle': function() {
+                this.app_edit_mode = !this.app_edit_mode;
+
+                // Reset the sidebar
+                setTimeout(function() {
+                    if (!this.app_edit_mode) {
+                        resetSidebar();
+                    }
+                }, 0);
+            },
+
             'add_sub_section': function(section_identifier, type, index) {
                 // TODO: Throw into utils
                 var id = Math.random().toString(36).slice(2);
@@ -63,6 +74,19 @@
                 };;
 
                 this.section_content[section_identifier].splice(index, 0, obj);
+            },
+
+            'sections.add': function(data) {
+                this.sections.push(data);
+            },
+
+            'sub_sections.add': function(section_id, data) {
+                for (var i = 0; i < this.sections.length; i++) {
+                    if (this.sections[i].id === section_id) {
+                        this.sections[i].sub_sections.push(data);
+                        break;
+                    }
+                }
             },
 
             'section.content.updated': function(id, section_identifier, content) {
@@ -82,7 +106,7 @@
 
         data: function() {
             return {
-                app_edit_mode: true,
+                app_edit_mode: false,
                 title: app_data.title,
                 header: app_data.header,
                 one_liner: app_data.one_liner,

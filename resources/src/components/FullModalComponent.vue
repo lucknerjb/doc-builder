@@ -27,6 +27,12 @@
             console.log(this.buttons)
         },
 
+        events: {
+            'modal.close': function() {
+                $('.modal.in').modal('toggle');
+            }
+        },
+
         props: {
             title: {
                 default: ''
