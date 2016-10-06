@@ -33,8 +33,18 @@
         ready () {
             var self = this;
             setTimeout(function() {
+                // TODO: Can we avoid duplicating `updateContent()`?
                 // Trigger things like prism highlighing
-                self.updateContent();
+                if (this.type === 'code_block') {
+                    // var clean_content = self.unescapeHtml(this.content);
+                    var html = Prism.highlight(this.clean_content, Prism.languages.markup);
+                    $(this.$el).find('code').html(html);
+                    Prism.highlightElement($('#1')[0]);
+                } else if (this.type === 'code') {
+                    $(this.$el).find('code').html(this.content);
+                } else {
+                    // $(this.$el).find('p').html(this.clean_content);
+                }
 
                 // TODO: Use Ace (https://ace.c9.io/#nav=howto) for the code_block
                 // Use tinymce for text blocks
