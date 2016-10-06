@@ -20,6 +20,10 @@
                             class="btn"
                             v-on:click="toggleEditMode(true)"
                             v-bind:class="{ 'btn-success': app_edit_mode, 'btn-default': !app_edit_mode }">Edit Mode</button>
+                    <button type="button"
+                            class="btn btn-primary"
+                            v-on:click="triggerGlobalSave(false)"
+                            v-bind:disabled="!needs_saving">Save Changes</button>
                 </div>
             </div><!--//branding-->
         </div><!--//container-->
@@ -32,7 +36,7 @@
         ready () {
         },
 
-        props: ['title', 'app_edit_mode'],
+        props: ['title', 'app_edit_mode', 'needs_saving'],
 
         methods: {
             toggleEditMode: function(mode) {
@@ -40,6 +44,10 @@
                     return;
                 }
                 this.$dispatch('app.edit_mode.toggle');
+            },
+
+            triggerGlobalSave: function() {
+                this.$dispatch('app.save');
             }
         }
     }

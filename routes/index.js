@@ -47,8 +47,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/data', function(req, res, next) {
-    jsonfile.writeFileSync(json_file, req.body, {spaces: 4});
-    console.log(req.body);
+    jsonfile.writeFile(json_file, req.body, {spaces: 4}, function(err) {
+        res.setHeader('Content-Type', 'application/json');
+        if (err) {
+            res.send(JSON.stringify({ "status": "error" }), 400);
+        }
+
+        res.send(JSON.stringify({ "status": "success" }), 200);
+    });
 });
 
 module.exports = router;

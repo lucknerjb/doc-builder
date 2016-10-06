@@ -1,6 +1,6 @@
 <template>
-    <div class="content-type edit-wrapper" style="position: relative; padding-top: 40px;">
-        <div class="edit-actions-wrapper" style="position: absolute; right: 10px; top: 10px;">
+    <div class="content-type" v-bind:class="{ 'edit-wrapper': app_edit_mode }">
+        <div class="edit-actions-wrapper" v-if="app_edit_mode">
             <a href="#" v-on:click="switchMode">Edit</a> |
             <a href="#">Remove</a>
         </div>
@@ -18,9 +18,9 @@
             </div><!--//code-block-->
         </div>
 
-        <div v-show="edit_mode">
-            <textarea rows="8" cols="100" v-model="clean_content" v-if="type === 'code_block'"></textarea>
-            <textarea rows="8" cols="100" v-model="content" v-if="type !== 'code_block'"></textarea>
+        <div v-show="edit_mode" v-if="app_edit_mode">
+            <textarea id="editor_{{ tinymce_id }}" rows="8" cols="100" v-model="clean_content" v-if="type === 'code_block'"></textarea>
+            <textarea id="editor_{{ tinymce_id }}" rows="8" cols="100" v-model="content" v-if="type !== 'code_block'"></textarea>
             <button type="button" name="button" v-on:click="update()">Update</button>
         </div>
     </div>
@@ -31,22 +31,28 @@
 
     export default {
         ready () {
-            if (this.type === 'code_block') {
-                var self = this;
-                setTimeout(function() {
-                    var clean_content = self.unescapeHtml(self.content);
-                    var html = Prism.highlight(clean_content, Prism.languages.markup);
-                    $('#1').html(html);
-                    $('#ta').val(clean_content);
-                }, 0)
-            }
+            var self = this;
+            setTimeout(function() {
+                // Trigger things like prism highlighing
+                self.updateContent();
+
+                // TODO: Use Ace (https://ace.c9.io/#nav=howto) for the code_block
+                // Use tinymce for text blocks
+                // Use a single input for one-line code
+                self.tinymce = tinymce.init({
+                    selector: 'textarea',
+                    content_css: '//www.tinymce.com/css/codepen.min.css'
+                });
+            }, 0);
         },
-        props: ['type', 'content', 'id', 'identifier'],
+        props: ['type', 'content', 'id', 'identifier', 'app_edit_mode'],
 
         data: function() {
             return {
+                tinymce_id: 'editor_' + Math.random().toString(36).slice(2),
                 clean_content: this.unescapeHtml(this.content),
                 edit_mode: false,
+                tinymce: null,
             }
         },
 
@@ -64,7 +70,10 @@
                 return $('<div />').html(safe).text();
             },
 
-            update: function() {
+            updateContent: function() {
+                var selector = 'editor_' + this.tinymce_id;
+                var content = tinymce.editors[selector].getContent();
+
                 if (this.type === 'code_block') {
                     // var clean_content = self.unescapeHtml(this.content);
                     var html = Prism.highlight(this.clean_content, Prism.languages.markup);
@@ -75,11 +84,18 @@
                 } else {
                     // $(this.$el).find('p').html(this.clean_content);
                 }
+            },
+
+            // TODO: Separate the updating of the various types as we'll need to fetch the new data
+            // in a different way based on the editing process used
+            update: function() {
+                this.updateContent();
 
                 // Trigger event
-                this.$dispatch('section.content.updated', this.id, this.identifier, this.content)
+                this.$dispatch('section.content.updated', this.id, this.identifier, this.content);
+                this.$dispatch('app.require_save');
 
-                this.edit_mode = !this.edit_mode
+                this.edit_mode = !this.edit_mode;
             }
         }
     }

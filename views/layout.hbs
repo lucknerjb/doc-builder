@@ -48,17 +48,25 @@
     <script type="text/javascript" src="/plugins/prism/prism.js"></script>
     <script type="text/javascript" src="/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
     <script type="text/javascript" src="/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/plugins/tinymce/tinymce-4.4.3.min.js"></script>
     <script type="text/javascript" src="/javascripts/main.js"></script>
 
     <style media="screen">
         .edit-wrapper {
             border: 3px dashed #CCC;
             margin-bottom: 10px;
-            padding: 10px;
+            padding: 40px 10px 10px 10px;
+            position: relative;
         }
 
         .edit-wrapper .code-block {
             margin: 0;
+        }
+
+        .edit-actions-wrapper {
+            position: absolute;
+            right: 10px;
+            top: 10px;
         }
 
         .add-content-block {

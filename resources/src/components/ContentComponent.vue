@@ -3,23 +3,31 @@
         <div class="content-inner">
             <section v-for="section in sections" id="{{ section.identifier }}" class="doc-section">
                 <h2 class="section-title">{{ section.label }}</h2>
-                <db-add-content-block :index="-1" :identifier="section.identifier"></db-add-content-block>
+                <db-add-content-block :index="-1" :identifier="section.identifier" v-if="app_edit_mode"></db-add-content-block>
 
                 <div class="sub-section-content" v-if="section_content[section.identifier]">
                     <div v-for="item in section_content[section.identifier]">
-                        <db-content-type :type="item.type" :content="item.content" :id="item.id" :identifier="section.identifier"></db-content-type>
-                        <db-add-content-block :index="$index" :identifier="section.identifier"></db-add-content-block>
+                        <db-content-type :type="item.type"
+                                         :content="item.content"
+                                         :id="item.id"
+                                         :identifier="section.identifier"
+                                         :app_edit_mode="app_edit_mode"></db-content-type>
+                        <db-add-content-block :index="$index" :identifier="section.identifier" v-if="app_edit_mode"></db-add-content-block>
                     </div>
                 </div>
 
                 <div id="{{ sub_section.location }}"  class="section-block" v-for="sub_section in section.sub_sections">
                     <h3 class="block-title">{{ sub_section.label }}</h3>
-                    <db-add-content-block :index="-1" :identifier="sub_section.identifier"></db-add-content-block>
+                    <db-add-content-block :index="-1" :identifier="sub_section.identifier" v-if="app_edit_mode"></db-add-content-block>
 
                     <div class="sub-section-content" v-if="section_content[sub_section.identifier]">
                         <div v-for="item in section_content[sub_section.identifier]">
-                            <db-content-type :type="item.type" :content="item.content" :id="item.id" :identifier="section.identifier"></db-content-type>
-                            <db-add-content-block :index="$index" :identifier="sub_section.identifier"></db-add-content-block>
+                            <db-content-type :type="item.type"
+                                             :content="item.content"
+                                             :id="item.id"
+                                             :identifier="section.identifier"
+                                             :app_edit_mode="app_edit_mode"></db-content-type>
+                            <db-add-content-block :index="$index" :identifier="sub_section.identifier" v-if="app_edit_mode"></db-add-content-block>
                         </div>
                     </div>
                 </div><!--//section-block-->
@@ -40,6 +48,6 @@
         },
 
         ready () {},
-        props: ['sections', 'section_content']
+        props: ['sections', 'section_content', 'app_edit_mode']
     }
 </script>
