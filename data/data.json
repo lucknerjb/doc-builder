@@ -67,7 +67,7 @@
                 "id": "urlbyl6huf867rh0nvjp833di",
                 "type": "code_block",
                 "content": "test",
-                "language": "",
+                "language": "html",
                 "position": 1
             },
             {
@@ -88,8 +88,8 @@
                 "id": "5gisa8t9syrxusor",
                 "position": 2,
                 "type": "code_block",
-                "content": "&#x3C;style media=&#x22;screen&#x22; href=&#x22;bootstrap-tagsinput.css&#x22;&#x3E;&#x3C;/style&#x3E;\n&#x3C;script src=&#x22;bootstrap-tagsinput.js&#x22;&#x3E;&#x3C;/script&#x3E;\n&#x3C;script&#x3E;\n    $(&#x27;.tags&#x27;).tagsinput();\n&#x3C;/script&#x3E;",
-                "language": "markup"
+                "content": "&lt;style media=\"screen\" href=\"bootstrap-tagsinput.css\"&gt;&lt;/style&gt;\n&lt;script src=\"bootstrap-tagsinput.js\"&gt;&lt;/script&gt;\n&lt;script&gt;\n    $('.tags').tagsinput(); //test - updated\n&lt;/script&gt;",
+                "language": "html"
             }
         ],
         "npm": [

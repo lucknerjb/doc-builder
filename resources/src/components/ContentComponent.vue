@@ -27,7 +27,7 @@
                                              :content="item.content"
                                              :language="item.language"
                                              :id="item.id"
-                                             :identifier="section.identifier"
+                                             :identifier="sub_section.identifier"
                                              :app_edit_mode="app_edit_mode"></db-content-type>
                             <db-add-content-block :index="$index" :identifier="sub_section.identifier" v-if="app_edit_mode"></db-add-content-block>
                         </div>

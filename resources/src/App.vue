@@ -108,8 +108,11 @@
 
             'section.content.updated': function(id, section_identifier, content) {
                 var found = false;
+                console.log(section_identifier)
+                console.log(content)
                 for (var i = 0; i < this.section_content[section_identifier].length; i++) {
                     if (this.section_content[section_identifier][i].id === id) {
+                        console.log('found')
                         this.section_content[section_identifier][i].content = content;
                         found = true;
                         break;
@@ -139,6 +142,8 @@
                     'sections': this.sections,
                     'content': this.section_content
                 };
+
+                console.log(JSON.stringify(post_data['content']))
 
                 $.ajax({
                     url: '/data',
