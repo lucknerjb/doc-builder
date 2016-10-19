@@ -9,6 +9,7 @@
                     <div v-for="item in section_content[section.identifier]">
                         <db-content-type :type="item.type"
                                          :content="item.content"
+                                         :language="item.language"
                                          :id="item.id"
                                          :identifier="section.identifier"
                                          :app_edit_mode="app_edit_mode"></db-content-type>
@@ -24,6 +25,7 @@
                         <div v-for="item in section_content[sub_section.identifier]">
                             <db-content-type :type="item.type"
                                              :content="item.content"
+                                             :language="item.language"
                                              :id="item.id"
                                              :identifier="section.identifier"
                                              :app_edit_mode="app_edit_mode"></db-content-type>

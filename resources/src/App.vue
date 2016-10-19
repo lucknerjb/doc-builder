@@ -79,6 +79,7 @@
                     "id": id,
                     "type": type,
                     "content": "test",
+                    "language": "markup", // TODO: Find a way to get this from the user for type code_block
                     "position": index
                 };
 

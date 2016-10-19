@@ -51,7 +51,8 @@
                 "id": "igggmcos1abawchy",
                 "position": 0,
                 "type": "text",
-                "content": "Test content - saved? 123 - updated.."
+                "content": "Test content - saved? 123 - updated..",
+                "language": ""
             }
         ],
         "browser": [
@@ -59,31 +60,36 @@
                 "id": "igggmcos1abawcdi",
                 "position": 0,
                 "type": "text",
-                "content": "Bootstrap TagsInput is available on <a href=\"https://cdnjs.com/libraries/bootstrap-tagsinput\">cdnjs.com</a>"
+                "content": "Bootstrap TagsInput is available on <a href=\"https://cdnjs.com/libraries/bootstrap-tagsinput\">cdnjs.com</a>",
+                "language": ""
             },
             {
                 "id": "urlbyl6huf867rh0nvjp833di",
                 "type": "code_block",
                 "content": "test",
+                "language": "",
                 "position": 1
             },
             {
                 "id": "470ljm3kg33wm2faxe087fzuxr",
                 "type": "text",
                 "content": "test",
+                "language": "",
                 "position": 2
             },
             {
                 "id": "xbrfujiksksm7vi",
                 "position": 1,
                 "type": "code",
-                "content": "bower install --save bootstrap-tagsinput"
+                "content": "bower install --save bootstrap-tagsinput",
+                "language": ""
             },
             {
                 "id": "5gisa8t9syrxusor",
                 "position": 2,
                 "type": "code_block",
-                "content": "&#x3C;style media=&#x22;screen&#x22; href=&#x22;bootstrap-tagsinput.css&#x22;&#x3E;&#x3C;/style&#x3E;\n&#x3C;script src=&#x22;bootstrap-tagsinput.js&#x22;&#x3E;&#x3C;/script&#x3E;\n&#x3C;script&#x3E;\n    $(&#x27;.tags&#x27;).tagsinput();\n&#x3C;/script&#x3E;"
+                "content": "&#x3C;style media=&#x22;screen&#x22; href=&#x22;bootstrap-tagsinput.css&#x22;&#x3E;&#x3C;/style&#x3E;\n&#x3C;script src=&#x22;bootstrap-tagsinput.js&#x22;&#x3E;&#x3C;/script&#x3E;\n&#x3C;script&#x3E;\n    $(&#x27;.tags&#x27;).tagsinput();\n&#x3C;/script&#x3E;",
+                "language": "markup"
             }
         ],
         "npm": [
@@ -91,6 +97,7 @@
                 "id": "sle0aibmtb2l660x39yx8ncdi",
                 "type": "text",
                 "content": "test",
+                "language": "",
                 "position": 0
             }
         ]

@@ -23,10 +23,6 @@
     import store from '../store.js'
 
     export default {
-        ready () {
-            console.log(this.buttons)
-        },
-
         events: {
             'modal.close': function() {
                 $('.modal.in').modal('toggle');
